@@ -52,7 +52,7 @@ SDL_Renderer* g_renderer = NULL;
 
 int gc_win_width = 800;
 int gc_win_height = 600;
-const char* gc_title = "Radar v0.1";
+//const char* gc_title = "Radar v0.1";
 
 long g_frames = 0;
 char g_title_text[] = "Radar v0.0.0 FPS: 000";
@@ -77,13 +77,13 @@ int initialise_window()
         return 1;
     }
     if (g_fullscreen == TRUE) {
-        g_window = SDL_CreateWindow(gc_title, 20, 20, 1280,
+        g_window = SDL_CreateWindow(g_title_text, 20, 20, 1280,
             800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP);
         gc_win_width = 1280;
         gc_win_height = 800;    //TODO Make this better!!!
     }
     else {
-        g_window = SDL_CreateWindow(gc_title, SDL_WINDOWPOS_CENTERED,
+        g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, gc_win_width,
             gc_win_height, SDL_WINDOW_SHOWN);
     }

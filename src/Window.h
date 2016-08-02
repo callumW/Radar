@@ -54,7 +54,7 @@ extern SDL_Renderer* g_renderer;
 
 extern int gc_win_width;
 extern int gc_win_height;
-extern const char* gc_title;
+//extern const char* gc_title;
 
 extern long g_frames;
 extern char g_title_text[];
