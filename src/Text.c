@@ -95,12 +95,12 @@ int load_from_font_file(FILE* font_f, const struct color* col)
     x = 0;
     y = 0;
     while (c != EOF) {
-
+/*
         printf("\nLine count: %d\n", line_count);
         printf("Char count: %d\n", char_count);
         printf("Char: %c\n", c);
         printf("x: %d, y: %d\n", x, y);
-
+*/
         if (x > 5 || y > 6) {
             printf("We tried to draw outside of font texture!\n");
             return 1;
@@ -136,7 +136,7 @@ int load_from_font_file(FILE* font_f, const struct color* col)
 
 void draw_string(char* text, int x, int y, int scale, int spacing)
 {
-    int size = sizeof(text) / sizeof(char);
+    //int size = sizeof(text) / sizeof(char);
     int i = 0;
     while (text[i] != '\0') {
         draw_char(text[i], x + i*char_width*scale + spacing, y, scale);
