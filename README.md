@@ -5,4 +5,4 @@ Radar is a submarine sim game, played using a radar-type ui, made in C.
 -  [SDL](http://www.libsdl.org)
 -  [CMake](https://www.cmake.org)
 
-###System Requirements
+##System Requirements
