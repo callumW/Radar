@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 project (Radar C)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
 file (GLOB SRC_FILES src/*.c)
 

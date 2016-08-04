@@ -83,6 +83,18 @@ int main(int argc, char** argv)
     init_timers();
     init_hud();
 
+    SDL_RendererInfo info;
+    if (SDL_GetRendererInfo(g_renderer, &info) == 0) {
+        printf("Render name: %s\n", info.name);
+        if ((info.flags & SDL_RENDERER_SOFTWARE) == SDL_RENDERER_SOFTWARE)
+            printf("Renderer uses software rendering!\n");
+        if ((info.flags & SDL_RENDERER_ACCELERATED) == SDL_RENDERER_ACCELERATED)
+            printf("Renderer uses accelerated rendering!\n");
+        if ((info.flags & SDL_RENDERER_PRESENTVSYNC) ==
+            SDL_RENDERER_PRESENTVSYNC)
+            printf("Renderer uses VYSNC!\n");
+    }
+
 
     int last_fps_check = SDL_GetTicks();
     print_fps(999);
@@ -92,15 +104,15 @@ int main(int argc, char** argv)
 
         update();
 
-        clear_screen();
-        draw_all();
-        show_screen();
-
         if (g_current_time - last_fps_check > 500) {
             int fps = 1000 / (g_current_time - g_previous_time);
             print_fps(fps);
             last_fps_check = g_current_time;
         }
+
+        clear_screen();
+        draw_all();
+        show_screen();
     }
 
     return 0;

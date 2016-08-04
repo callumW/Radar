@@ -61,8 +61,9 @@ BOOL g_fullscreen = FALSE;
 
 void clear_screen()
 {
-    SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(g_renderer);
+    SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, 255);
+    if (SDL_RenderClear(g_renderer) != 0)
+        printf("Failed to clear screen! %s\n", SDL_GetError());
 }
 
 void show_screen()
@@ -72,7 +73,7 @@ void show_screen()
 
 int initialise_window()
 {
-    if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER|SDL_INIT_EVENTS) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER|SDL_INIT_EVENTS) != 0) {
         printf("Failed to initialise SDL!\nError: %s\n", SDL_GetError());
         return 1;
     }
@@ -94,7 +95,7 @@ int initialise_window()
     }
 
     g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED|
-    SDL_RENDERER_PRESENTVSYNC);
+        SDL_RENDERER_TARGETTEXTURE|SDL_RENDERER_PRESENTVSYNC);
 
     if (g_renderer == NULL) {
         printf("Failed to create SDL Renderer!\nError: %s\n", SDL_GetError());
