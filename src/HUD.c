@@ -46,7 +46,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "HUD.h"
 #include "Window.h"
-#include "Text.h"
 #include "Game.h"
 #include "Input_handling.h"
 #include "Draw.h"
@@ -56,9 +55,6 @@ SDL_Point g_border_points[5];
 SDL_Point g_mouse_rect_points[5];
 SDL_Point g_mouse_lines[8];
 const int mouse_width = 8;
-
-char g_bearing_text[] = "bearing  360";
-char g_depth_text[] = "depth 00000m";
 
 struct color g_border_color = {61, 213, 62, 255};
 
@@ -109,16 +105,12 @@ void draw_border()
 
 void draw_radar_beam()
 {
-    //SDL_RenderDrawLine(g_renderer, gc_padding, g_radar_beam_y,
-    //    gc_win_width-gc_padding, g_radar_beam_y);
     draw_line(gc_padding, g_radar_beam_y, gc_win_width-gc_padding,
         g_radar_beam_y);//
 }
 
 void draw_mouse_pointer()
 {
-    //SDL_RenderDrawPoint(g_renderer, g_mouse_x, g_mouse_y);  //Center point
-    //SDL_RenderDrawLines(g_renderer, g_mouse_rect_points, 5);    //Border
     draw_line(g_mouse_rect_points[0].x, g_mouse_rect_points[0].y,
         g_mouse_rect_points[1].x, g_mouse_rect_points[1].y);
 
@@ -132,6 +124,7 @@ void draw_mouse_pointer()
         g_mouse_rect_points[4].x, g_mouse_rect_points[4].y);
 
     /* Axis lines */
+    /*
     draw_line(g_mouse_lines[0].x, g_mouse_lines[0].y,
         g_mouse_lines[1].x, g_mouse_lines[1].y);
 
@@ -143,6 +136,10 @@ void draw_mouse_pointer()
 
     draw_line(g_mouse_lines[6].x, g_mouse_lines[6].y,
         g_mouse_lines[7].x, g_mouse_lines[7].y);
+        */
+
+    draw_line(g_mouse_x, gc_padding, g_mouse_x, gc_win_height-gc_padding);
+    draw_line(gc_padding, g_mouse_y, gc_win_width-gc_padding, g_mouse_y);
 }
 
 void update_mouse_pointer()

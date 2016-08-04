@@ -51,7 +51,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Bool.h"
 
 extern SDL_Window* g_window;
-extern SDL_Renderer* g_renderer;
 extern SDL_GLContext* g_gl_context;
 
 extern int gc_win_width;

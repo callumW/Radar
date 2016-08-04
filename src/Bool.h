@@ -47,6 +47,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef BOOL
 #include "SDL_opengl.h"
 #define BOOL GLboolean
-#define TRUE GL_TRUE
-#define FALSE GL_FALSE
+/***** WARNING! ********/
+/* In the future if GL_FALSE and GL_TRUE then this will break
+    but I'm sick of the compiler warnings. */
+#define TRUE 1
+#define FALSE 0
 #endif

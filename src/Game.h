@@ -50,7 +50,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "SDL.h"
 #include "Window.h"
 #include "Input_handling.h"
-#include "Text.h"
 #include "Bool.h"
 
 extern long g_previous_time;

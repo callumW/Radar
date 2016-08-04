@@ -47,8 +47,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "Window.h"
 #include "Game.h"
+#include <stdio.h>
+#include <math.h>
 SDL_Window* g_window = NULL;
-SDL_Renderer* g_renderer = NULL;
 SDL_GLContext* g_gl_context = NULL;
 
 int gc_win_width = 800;
@@ -56,7 +57,7 @@ int gc_win_height = 600;
 //const char* gc_title = "Radar v0.1";
 
 long g_frames = 0;
-char g_title_text[] = "Radar v0.0.0 FPS: 000";
+char g_title_text[] = "Radar v0.0.0 FPS: [000]";
 
 BOOL g_fullscreen = FALSE;
 
@@ -80,8 +81,8 @@ int initialise_window()
         g_window = SDL_CreateWindow(g_title_text, 20, 20, 1280,
             800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_OPENGL|
             SDL_WINDOW_INPUT_GRABBED);
-        gc_win_width = 1280;
-        gc_win_height = 800;    //TODO Make this better!!!
+        if (g_window != NULL)
+            SDL_GetWindowSize(g_window, &gc_win_width, &gc_win_height);
     }
     else {
         g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_CENTERED,
@@ -122,9 +123,9 @@ void print_fps(int fps)
         int tens = fps / 10;
         fps -= tens * 10;
 
-        g_title_text[16] = '0' + hundreds;
-        g_title_text[17] = '0' + tens;
-        g_title_text[18] = '0' + fps;
+        g_title_text[19] = '0' + hundreds;
+        g_title_text[20] = '0' + tens;
+        g_title_text[21] = '0' + fps;
 
         SDL_SetWindowTitle(g_window, g_title_text);
     }
