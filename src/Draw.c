@@ -49,8 +49,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 void draw_line(int x1, int y1, int x2, int y2)
 {
     glBegin(GL_LINES);
-        glVertex2f(normalise_x(x1), normalise_y(y1));
-        glVertex2f(normalise_x(x2), normalise_y(y2));
+        //glVertex2f(normalise_x(x1), normalise_y(y1));
+        //glVertex2f(normalise_x(x2), normalise_y(y2));
+        glVertex2i(x1, y1);
+        glVertex2i(x2, y2);
     glEnd();
 }
 

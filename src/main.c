@@ -49,7 +49,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "Input_handling.h"
 #include "Window.h"
-#include "Text.h"
 #include "Game.h"
 #include "HUD.h"
 #include "Bool.h"
@@ -79,22 +78,8 @@ int main(int argc, char** argv)
         printf(" 10 seconds...\n");
         return 1;
     }
-    initialise_charset(&g_border_color);
     init_timers();
     init_hud();
-
-    SDL_RendererInfo info;
-    if (SDL_GetRendererInfo(g_renderer, &info) == 0) {
-        printf("Render name: %s\n", info.name);
-        if ((info.flags & SDL_RENDERER_SOFTWARE) == SDL_RENDERER_SOFTWARE)
-            printf("Renderer uses software rendering!\n");
-        if ((info.flags & SDL_RENDERER_ACCELERATED) == SDL_RENDERER_ACCELERATED)
-            printf("Renderer uses accelerated rendering!\n");
-        if ((info.flags & SDL_RENDERER_PRESENTVSYNC) ==
-            SDL_RENDERER_PRESENTVSYNC)
-            printf("Renderer uses VYSNC!\n");
-    }
-
 
     int last_fps_check = SDL_GetTicks();
     print_fps(999);

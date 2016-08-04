@@ -55,9 +55,6 @@ extern SDL_Point g_border_points[];
 extern struct color g_border_color;
 extern const int gc_padding;
 
-extern char g_bearing_text[];
-extern char g_depth_text[];
-
 extern SDL_Point g_mouse_rect_points[];
 
 /*
@@ -69,6 +66,11 @@ void draw_hud();
     Initialise the HUD
 */
 void init_hud();
+
+/*
+    Draw the screen border
+*/
+void draw_border();
 
 /*
     Draw the radar beam line on screen

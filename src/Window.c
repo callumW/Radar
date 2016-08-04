@@ -62,15 +62,12 @@ BOOL g_fullscreen = FALSE;
 
 void clear_screen()
 {
-    SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, 255);
-    if (SDL_RenderClear(g_renderer) != 0)
-        printf("Failed to clear screen! %s\n", SDL_GetError());
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void show_screen()
 {
     SDL_GL_SwapWindow(g_window);
-    //SDL_RenderPresent(g_renderer);
 }
 
 int initialise_window()
@@ -81,14 +78,16 @@ int initialise_window()
     }
     if (g_fullscreen == TRUE) {
         g_window = SDL_CreateWindow(g_title_text, 20, 20, 1280,
-            800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_OPENGL);
+            800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_OPENGL|
+            SDL_WINDOW_INPUT_GRABBED);
         gc_win_width = 1280;
         gc_win_height = 800;    //TODO Make this better!!!
     }
     else {
         g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, gc_win_width,
-            gc_win_height, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
+            gc_win_height, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL|
+            SDL_WINDOW_INPUT_GRABBED);
     }
 
     if (g_window == NULL) {
@@ -100,7 +99,7 @@ int initialise_window()
         printf("Failed to initialise openGL\n");
         return 5;
     }
-
+/*
     g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED|
         SDL_RENDERER_TARGETTEXTURE|SDL_RENDERER_PRESENTVSYNC);
 
@@ -108,6 +107,7 @@ int initialise_window()
         printf("Failed to create SDL Renderer!\nError: %s\n", SDL_GetError());
         return 3;
     }
+*/
     return 0;
 }
 
@@ -148,6 +148,9 @@ int init_opengl()
     /* Init projection matrix */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    /******* IMPORTANT !!!!!!! ************/
+    /* Convert coord systems to our normal system with 0, 0 in top left */
+    glOrtho( 0.0, gc_win_width, gc_win_height, 0.0, 1.0, -1.0 );
 
     /* Check for error */
     error = glGetError();
@@ -175,10 +178,5 @@ int init_opengl()
         printf("Error setting clear color for openGL!\n");
         return 1;
     }
-
-    /* de-normalise coord system to our normal system */
-    //glOrtho(0, 0, 20, 20, 0, 1);
-
-
     return 0;
 }

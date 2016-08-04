@@ -67,6 +67,7 @@ void draw_hud()
     //SDL_SetRenderDrawColor(g_renderer, g_border_color.r, g_border_color.g,
         //g_border_color.b, g_border_color.a);
     //SDL_RenderDrawLines(g_renderer, g_border_points, 5);
+    draw_border();
     if (g_scanning == TRUE)
         draw_radar_beam();
     //draw_string(g_bearing_text, 10, 10, 2, 2);
@@ -89,6 +90,21 @@ void init_hud()
     g_border_points[4] = tl;
 
     SDL_ShowCursor(SDL_DISABLE);
+}
+
+void draw_border()
+{
+    draw_line(g_border_points[0].x, g_border_points[0].y,
+        g_border_points[1].x, g_border_points[1].y);
+
+    draw_line(g_border_points[1].x, g_border_points[1].y,
+        g_border_points[2].x, g_border_points[2].y);
+
+    draw_line(g_border_points[3].x, g_border_points[3].y,
+        g_border_points[2].x, g_border_points[2].y);
+
+    draw_line(g_border_points[4].x, g_border_points[4].y,
+        g_border_points[3].x, g_border_points[3].y);
 }
 
 void draw_radar_beam()
