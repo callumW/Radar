@@ -46,7 +46,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "Input_handling.h"
 #include "HUD.h"
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 BOOL g_running = 1;
 int g_mouse_x = 0;

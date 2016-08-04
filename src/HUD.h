@@ -48,7 +48,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef HUD_H
 #define HUD_H
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 #include "Color.h"
 
 extern SDL_Point g_border_points[];

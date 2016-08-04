@@ -45,7 +45,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 #include "Bool.h"
 

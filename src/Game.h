@@ -47,7 +47,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 #include "Window.h"
 #include "Input_handling.h"
 #include "Text.h"

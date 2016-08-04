@@ -45,7 +45,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               \_____|\__,_|_| |_| |_|\___||___/
 */
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 #include "Input_handling.h"
 #include "Window.h"
@@ -53,6 +53,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Game.h"
 #include "HUD.h"
 #include "Bool.h"
+
+#undef main
 
 int main(int argc, char** argv)
 {

@@ -51,8 +51,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef TEXT_H
 #define TEXT_H
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 #include "Color.h"
+#include <stdio.h>
 
 extern SDL_Texture* g_charset_texture;
 

@@ -59,7 +59,7 @@ const int char_height = 5;
 int initialise_charset(const struct color* c)
 {
     FILE* font_file = NULL;
-    font_file = fopen("../Font", "r");
+    font_file = fopen("media/Font", "r");
     if (font_file == NULL) {
         printf("Failed to open font file!");
         return 1;
