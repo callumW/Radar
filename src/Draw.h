@@ -54,4 +54,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     Draw a line between the two specifed points
 */
 void draw_line(int x1, int y1, int x2, int y2);
+
+/*
+    Normalise specifed y coordinate to the openGL systems
+    \param y The y coordinate
+    \retrun the normalised version
+*/
+inline float normalise_y(int y);
+
+/*
+    Normalise the specified x coordinate to the openGl system
+    \param x The x coordinate
+    \return the normalised version
+*/
+inline float normalise_x(int x);inline 
 #endif

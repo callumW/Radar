@@ -64,10 +64,14 @@ BOOL g_scanning = TRUE;
 
 void draw_all()
 {
-    //draw_hud();
     glClear(GL_COLOR_BUFFER_BIT);
-
-    draw_line(1, 1, -1, -1);
+    float r, g, b;
+    r = (float) g_border_color.r / 255;
+    g = (float) g_border_color.g / 255;
+    b = (float) g_border_color.b / 255;
+    glColor3f(r, g, b);
+    //draw_line(0, 0, 20, 20);
+    draw_hud();
 }
 
 void update()

@@ -49,6 +49,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Text.h"
 #include "Game.h"
 #include "Input_handling.h"
+#include "Draw.h"
 
 const int gc_padding = 3;
 SDL_Point g_border_points[5];
@@ -63,13 +64,13 @@ struct color g_border_color = {61, 213, 62, 255};
 
 void draw_hud()
 {
-    SDL_SetRenderDrawColor(g_renderer, g_border_color.r, g_border_color.g,
-        g_border_color.b, g_border_color.a);
-    SDL_RenderDrawLines(g_renderer, g_border_points, 5);
+    //SDL_SetRenderDrawColor(g_renderer, g_border_color.r, g_border_color.g,
+        //g_border_color.b, g_border_color.a);
+    //SDL_RenderDrawLines(g_renderer, g_border_points, 5);
     if (g_scanning == TRUE)
         draw_radar_beam();
-    draw_string(g_bearing_text, 10, 10, 2, 2);
-    draw_string(g_depth_text, 10, 22, 2, 2);
+    //draw_string(g_bearing_text, 10, 10, 2, 2);
+    //draw_string(g_depth_text, 10, 22, 2, 2);
 
     draw_mouse_pointer();
 }
@@ -92,28 +93,40 @@ void init_hud()
 
 void draw_radar_beam()
 {
-    SDL_RenderDrawLine(g_renderer, gc_padding, g_radar_beam_y,
-        gc_win_width-gc_padding, g_radar_beam_y);
+    //SDL_RenderDrawLine(g_renderer, gc_padding, g_radar_beam_y,
+    //    gc_win_width-gc_padding, g_radar_beam_y);
+    draw_line(gc_padding, g_radar_beam_y, gc_win_width-gc_padding,
+        g_radar_beam_y);//
 }
 
 void draw_mouse_pointer()
 {
-    SDL_RenderDrawPoint(g_renderer, g_mouse_x, g_mouse_y);  //Center point
-    SDL_RenderDrawLines(g_renderer, g_mouse_rect_points, 5);    //Border
+    //SDL_RenderDrawPoint(g_renderer, g_mouse_x, g_mouse_y);  //Center point
+    //SDL_RenderDrawLines(g_renderer, g_mouse_rect_points, 5);    //Border
+    draw_line(g_mouse_rect_points[0].x, g_mouse_rect_points[0].y,
+        g_mouse_rect_points[1].x, g_mouse_rect_points[1].y);
+
+    draw_line(g_mouse_rect_points[1].x, g_mouse_rect_points[1].y,
+        g_mouse_rect_points[2].x, g_mouse_rect_points[2].y);
+
+    draw_line(g_mouse_rect_points[2].x, g_mouse_rect_points[2].y,
+        g_mouse_rect_points[3].x, g_mouse_rect_points[3].y);
+
+    draw_line(g_mouse_rect_points[3].x, g_mouse_rect_points[3].y,
+        g_mouse_rect_points[4].x, g_mouse_rect_points[4].y);
 
     /* Axis lines */
-    SDL_RenderDrawLine(g_renderer, g_mouse_lines[0].x, g_mouse_lines[0].y,
+    draw_line(g_mouse_lines[0].x, g_mouse_lines[0].y,
         g_mouse_lines[1].x, g_mouse_lines[1].y);
 
-    SDL_RenderDrawLine(g_renderer, g_mouse_lines[2].x, g_mouse_lines[2].y,
+    draw_line(g_mouse_lines[2].x, g_mouse_lines[2].y,
         g_mouse_lines[3].x, g_mouse_lines[3].y);
 
-    SDL_RenderDrawLine(g_renderer, g_mouse_lines[4].x, g_mouse_lines[4].y,
+    draw_line(g_mouse_lines[4].x, g_mouse_lines[4].y,
         g_mouse_lines[5].x, g_mouse_lines[5].y);
 
-    SDL_RenderDrawLine(g_renderer, g_mouse_lines[6].x, g_mouse_lines[6].y,
+    draw_line(g_mouse_lines[6].x, g_mouse_lines[6].y,
         g_mouse_lines[7].x, g_mouse_lines[7].y);
-
 }
 
 void update_mouse_pointer()
