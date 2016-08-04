@@ -83,16 +83,14 @@ int initialise_window(const struct Game_setting* set)
     if (set->fullscreen == TRUE) {
         g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_UNDEFINED,
             SDL_WINDOWPOS_UNDEFINED, gc_win_width, gc_win_height,
-            SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN|SDL_WINDOW_OPENGL|
-            SDL_WINDOW_INPUT_GRABBED);
+            SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN|SDL_WINDOW_OPENGL);
         if (g_window != NULL)
             SDL_GetWindowSize(g_window, &gc_win_width, &gc_win_height);
     }
     else {
         g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, gc_win_width,
-            gc_win_height, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL|
-            SDL_WINDOW_INPUT_GRABBED);
+            gc_win_height, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
     }
 
     if (g_window == NULL) {
