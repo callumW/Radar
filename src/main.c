@@ -110,7 +110,7 @@ int main(int argc, char** argv)
             last_fps_check = g_current_time;
         }
 
-        clear_screen();
+        //clear_screen();
         draw_all();
         show_screen();
     }

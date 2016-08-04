@@ -17,6 +17,8 @@ add_executable (Radar ${SRC_FILES})
 #    C:/SDL2)
 
 find_package (SDL REQUIRED)
+find_package (OpenGL REQUIRED)
 
 include_directories (${SDL_INCLUDE_DIR})
 target_link_libraries (Radar ${SDL_LIBRARY})
+target_link_libraries (Radar ${OPENGL_LIBRARY})

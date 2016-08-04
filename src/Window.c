@@ -49,6 +49,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Game.h"
 SDL_Window* g_window = NULL;
 SDL_Renderer* g_renderer = NULL;
+SDL_GLContext* g_gl_context = NULL;
 
 int gc_win_width = 800;
 int gc_win_height = 600;
@@ -68,7 +69,8 @@ void clear_screen()
 
 void show_screen()
 {
-    SDL_RenderPresent(g_renderer);
+    SDL_GL_SwapWindow(g_window);
+    //SDL_RenderPresent(g_renderer);
 }
 
 int initialise_window()
@@ -79,19 +81,24 @@ int initialise_window()
     }
     if (g_fullscreen == TRUE) {
         g_window = SDL_CreateWindow(g_title_text, 20, 20, 1280,
-            800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP);
+            800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_OPENGL);
         gc_win_width = 1280;
         gc_win_height = 800;    //TODO Make this better!!!
     }
     else {
         g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, gc_win_width,
-            gc_win_height, SDL_WINDOW_SHOWN);
+            gc_win_height, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
     }
 
     if (g_window == NULL) {
         printf("Failed to create SDL Window!\nError: %s\n", SDL_GetError());
         return 2;
+    }
+
+    if (init_opengl() != 0) {
+        printf("Failed to initialise openGL\n");
+        return 5;
     }
 
     g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED|
@@ -121,4 +128,57 @@ void print_fps(int fps)
 
         SDL_SetWindowTitle(g_window, g_title_text);
     }
+}
+
+int init_opengl()
+{
+    g_gl_context = SDL_GL_CreateContext(g_window);
+    if (g_gl_context == NULL) {
+        printf("Failed to create openGL context!\nError: %s\n", SDL_GetError());
+        return 1;
+    }
+
+    //Enable vysnc
+    if (SDL_GL_SetSwapInterval(1) != 0) {
+        printf("WARNING: Could not enable vsync in openGL.\n");
+    }
+
+    GLenum error = GL_NO_ERROR;
+
+    /* Init projection matrix */
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    /* Check for error */
+    error = glGetError();
+    if (error != GL_NO_ERROR) {
+        printf("Error initialising projection matrix!\n");
+        return 1;
+    }
+
+    /* Initialise Model view */
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    /* Check for error */
+    error = glGetError();
+    if (error != GL_NO_ERROR) {
+        printf("Error initialising model view matrix!\n");
+        return 1;
+    }
+
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);   //Set clear color
+
+    /* Check for error */
+    error = glGetError();
+    if (error != GL_NO_ERROR) {
+        printf("Error setting clear color for openGL!\n");
+        return 1;
+    }
+
+    /* de-normalise coord system to our normal system */
+    //glOrtho(0, 0, 20, 20, 0, 1);
+
+
+    return 0;
 }

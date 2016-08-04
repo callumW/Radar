@@ -48,6 +48,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Game.h"
 #include "HUD.h"
 #include "Bool.h"
+#include "SDL_opengl.h"
+#include "Draw.h"
 
 long g_previous_time = 0;
 long g_current_time = 0;
@@ -62,7 +64,10 @@ BOOL g_scanning = TRUE;
 
 void draw_all()
 {
-    draw_hud();
+    //draw_hud();
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    draw_line(1, 1, -1, -1);
 }
 
 void update()

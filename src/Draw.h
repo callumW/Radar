@@ -1,9 +1,8 @@
 /*
-    File: Window.h
+    File: Draw.h
     Author: Callum Wilson callum.w@outlook.com
-    Description: Functions and variables relating to the game window and
-    rendering to it.
-    Date: 2016/07/27
+    Description: Functions for drawing basic 2d Primitives.
+    Date: 2016/08/04
 
 COPYRIGHT (c) 2016 Callum Wilson
 
@@ -45,47 +44,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
+#ifndef DRAW_H
+#define DRAW_H
 #include "SDL.h"
 #include "SDL_opengl.h"
-
-#include "Bool.h"
-
-extern SDL_Window* g_window;
-extern SDL_Renderer* g_renderer;
-extern SDL_GLContext* g_gl_context;
-
-extern int gc_win_width;
-extern int gc_win_height;
-//extern const char* gc_title;
-
-extern long g_frames;
-extern char g_title_text[];
-
-extern BOOL g_fullscreen;
+#include "Window.h"
 
 /*
-    Clear the screen with blackness.
+    Draw a line between the two specifed points
 */
-void clear_screen();
-
-/*
-    Present the screen to the user
-*/
-void show_screen();
-
-/*
-    Initialise SDL systems and create a window and renderer
-    \return 0 upon success, not-zero otherwise
-*/
-int initialise_window();
-
-/*
-    Initialise some openGL fluff
-    \return 0 upon success, not-zero otherwise
-*/
-int init_opengl();
-
-/*
-    print the frames per second in the window title
-*/
-void print_fps(int fps);
+void draw_line(int x1, int y1, int x2, int y2);
+#endif

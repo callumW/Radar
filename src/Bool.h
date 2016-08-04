@@ -44,11 +44,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
-#ifndef BOOL_H
-#define BOOL_H
-
-#define BOOL unsigned short
-#define TRUE 1
-#define FALSE 0
-
+#ifndef BOOL
+#include "SDL_opengl.h"
+#define BOOL GLboolean
+#define TRUE GL_TRUE
+#define FALSE GL_FALSE
 #endif
