@@ -7,8 +7,11 @@ file (GLOB SRC_FILES src/*.c)
 
 add_executable (Radar ${SRC_FILES})
 
-find_library (SDL_LIBRARY NAMES SDL2 PATHS /Library/Framworks )
+#find_library (SDL_LIBRARY NAMES SDL2 SDL PATHS
+#    /Library/Framworks
+#    C:/SDL2)
 
-if (SDL_LIBRARY)
-    target_link_libraries (Radar ${SDL_LIBRARY})
-endif()
+find_package (SDL REQUIRED)
+
+include_directories (${SDL_INCLUDE_DIR})
+target_link_libraries (Radar ${SDL_LIBRARY})
