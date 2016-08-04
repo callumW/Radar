@@ -1,9 +1,9 @@
 /*
-    File: Window.h
+    File: Settings.h
     Author: Callum Wilson callum.w@outlook.com
-    Description: Functions and variables relating to the game window and
-    rendering to it.
-    Date: 2016/07/27
+    Description: Provide an interface for the user to select (and save) program
+        options.
+    Date: 2016/08/04
 
 COPYRIGHT (c) 2016 Callum Wilson
 
@@ -45,48 +45,20 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
-#include "SDL.h"
-#include "SDL_opengl.h"
-
+#ifndef SETTINGS_H
+#define SETTINGS_H
 #include "Bool.h"
-#include "Settings.h"
+struct Game_setting {
+    int width;
+    int height;
+    BOOL fullscreen;
+};
 
-extern SDL_Window* g_window;
-extern SDL_GLContext* g_gl_context;
-
-extern int gc_win_width;
-extern int gc_win_height;
-//extern const char* gc_title;
-
-extern long g_frames;
-extern char g_title_text[];
-
-extern BOOL g_fullscreen;
+extern struct Game_setting default_settings[];
 
 /*
-    Clear the screen with blackness.
+    Request the desired settings from the user.
+    \return A game_settings struct representing the user choice.
 */
-void clear_screen();
-
-/*
-    Present the screen to the user
-*/
-void show_screen();
-
-/*
-    Initialise SDL systems and create a window and renderer
-    \param set The desired game settings
-    \return 0 upon success, not-zero otherwise
-*/
-int initialise_window(const struct Game_setting* set);
-
-/*
-    Initialise some openGL fluff
-    \return 0 upon success, not-zero otherwise
-*/
-int init_opengl();
-
-/*
-    print the frames per second in the window title
-*/
-void print_fps(int fps);
+struct Game_setting request_settings();
+#endif

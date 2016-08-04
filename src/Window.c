@@ -71,15 +71,19 @@ void show_screen()
     SDL_GL_SwapWindow(g_window);
 }
 
-int initialise_window()
+int initialise_window(const struct Game_setting* set)
 {
+    gc_win_width = set->width;
+    gc_win_height = set->height;
+
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER|SDL_INIT_EVENTS) != 0) {
         printf("Failed to initialise SDL!\nError: %s\n", SDL_GetError());
         return 1;
     }
-    if (g_fullscreen == TRUE) {
-        g_window = SDL_CreateWindow(g_title_text, 20, 20, 1280,
-            800, SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_OPENGL|
+    if (set->fullscreen == TRUE) {
+        g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_UNDEFINED,
+            SDL_WINDOWPOS_UNDEFINED, gc_win_width, gc_win_height,
+            SDL_WINDOW_SHOWN|SDL_WINDOW_FULLSCREEN|SDL_WINDOW_OPENGL|
             SDL_WINDOW_INPUT_GRABBED);
         if (g_window != NULL)
             SDL_GetWindowSize(g_window, &gc_win_width, &gc_win_height);

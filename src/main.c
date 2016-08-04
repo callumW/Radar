@@ -52,6 +52,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Game.h"
 #include "HUD.h"
 #include "Bool.h"
+#include "Settings.h"
 
 #include <stdio.h>
 
@@ -59,6 +60,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 int main(int argc, char** argv)
 {
+    /*
     if (argc > 1) {
         int i = 0;
         while (i<argc) {
@@ -74,8 +76,9 @@ int main(int argc, char** argv)
             }
             i++;
         }
-    }
-    if (initialise_window() != 0) {
+    }*/
+    struct Game_setting settings = request_settings();
+    if (initialise_window(&settings) != 0) {
         printf("Failed to setup critical components!\nself destructing in");
         printf(" 10 seconds...\n");
         return 1;
