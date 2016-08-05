@@ -17,7 +17,7 @@ See [LICENSE](LICENSE)
 - a dedicated GPU, i.e. a graphics card, unless your CPU is fast enough
 
 ##Installation (TO DO: Make this better!!)
-1. Run CMake in the Radar directory (Radar/) where the file [CMakeLists.txt}
+1. Run CMake in the Radar directory (Radar/) where the file [CMakeLists.txt]
 (CMakeLists.txt) lives. **Note:** It is highly recommended to choose the build
 directory outside of the source directory.
 2. Navigate to the build directory and run your chosen make system / open it
