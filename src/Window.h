@@ -47,7 +47,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "SDL.h"
 #include "SDL_opengl.h"
-
+#include <GL/glu.h>
 #include "Bool.h"
 #include "Settings.h"
 

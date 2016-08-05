@@ -159,6 +159,7 @@ int init_opengl()
     error = glGetError();
     if (error != GL_NO_ERROR) {
         printf("Error initialising projection matrix!\n");
+        printf("Error: %s\n", gluErrorString(error));
         return 1;
     }
 
@@ -170,6 +171,7 @@ int init_opengl()
     error = glGetError();
     if (error != GL_NO_ERROR) {
         printf("Error initialising model view matrix!\n");
+        printf("Error: %s\n", gluErrorString(error));
         return 1;
     }
 
@@ -179,6 +181,7 @@ int init_opengl()
     error = glGetError();
     if (error != GL_NO_ERROR) {
         printf("Error setting clear color for openGL!\n");
+        printf("Error: %s\n", gluErrorString(error));
         return 1;
     }
     return 0;

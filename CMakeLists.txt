@@ -19,6 +19,12 @@ add_executable (Radar ${SRC_FILES})
 find_package (SDL REQUIRED)
 find_package (OpenGL REQUIRED)
 
+message ("OPENGL_LIBRARY: ${OPENGL_LIBRARY}")
+message ("SDL Include path: ${SDL_INCLUDE_DIR}")
+message ("SDL Links: ${SDL_LIBRARY}")
+
+
 include_directories (${SDL_INCLUDE_DIR})
+include_directories (${OPENGL_INCLUDE_DIR})
 target_link_libraries (Radar ${SDL_LIBRARY})
 target_link_libraries (Radar ${OPENGL_LIBRARY})
