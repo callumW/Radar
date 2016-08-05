@@ -3,7 +3,7 @@
 Radar is a submarine sim game, played using a radar-type ui, made in C.
 ##License
 Radar is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-See [LICENSE.md](LICENSE)
+See [LICENSE](LICENSE)
 ##Tools/Libraries/Languages used
 -  [SDL](http://www.libsdl.org) & [openGL](https://www.opengl.org/)
 -  [CMake](https://www.cmake.org)
