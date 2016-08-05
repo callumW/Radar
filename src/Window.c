@@ -54,10 +54,9 @@ SDL_GLContext* g_gl_context = NULL;
 
 int gc_win_width = 800;
 int gc_win_height = 600;
-//const char* gc_title = "Radar v0.1";
 
 long g_frames = 0;
-char g_title_text[] = "Radar v0.0.0 FPS: [000]";
+char g_title_text[] = "Radar v0.1.0 FPS: [000]";
 
 BOOL g_fullscreen = FALSE;
 

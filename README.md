@@ -1,4 +1,4 @@
-#Radar v0.0.0 STATUS: Work-In-Progress i.e. do NOT use
+#Radar v0.1.0 STATUS: Work-In-Progress i.e. do NOT use
 ##Description
 Radar is a submarine sim game, played using a radar-type ui, made in C.
 ##License
