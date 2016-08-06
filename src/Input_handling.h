@@ -46,6 +46,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include "Bool.h"
+#include "Platform.h"
 
 extern BOOL g_running;
 extern int g_mouse_x;

@@ -49,6 +49,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include "Window.h"
+#include "Platform.h"
 
 /*
     Draw a line between the two specifed points
@@ -67,5 +68,5 @@ inline float normalise_y(int y);
     \param x The x coordinate
     \return the normalised version
 */
-inline float normalise_x(int x);inline 
+inline float normalise_x(int x);
 #endif

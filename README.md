@@ -10,15 +10,23 @@ See [LICENSE](LICENSE)
 
 ##System Requirements
 - [CMake](https://www.cmake.org)
-- some form of make system/IDE e.g. GNU Make, Visual Studio, Eclipse
-- a C compiler (Will likely come with your chosen IDE)
+- GCC and some form of auto-make-system (may work with other compilers)
 - [SDL](http://www.libsdl.org)
 - [openGL](https://www.opengl.org/) (will likely already be installed)
 - a dedicated GPU, i.e. a graphics card, unless your CPU is fast enough
 
 ##Installation (TO DO: Make this better!!)
 1. Run CMake in the Radar directory (Radar/) where the file [CMakeLists.txt]
-(CMakeLists.txt) lives. **Note:** It is highly recommended to choose the build
+(CMakeLists.txt) lives. **Note:** It is highly recommended you make the build
 directory outside of the source directory.
 2. Navigate to the build directory and run your chosen make system / open it
 with your chosen IDE.
+3. Before running the compiled program make sure to copy the SDL.dll into the
+same directory as the executable (on windows only).
+
+##Tested Systems:
+- Windows:
+..+ MinGW (32 bit)
+..+ Visual Studio 11 (32 bit)
+- Linux:
+- OS X:

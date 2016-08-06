@@ -51,6 +51,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Window.h"
 #include "Input_handling.h"
 #include "Bool.h"
+#include "Platform.h"
 
 extern long g_previous_time;
 extern long g_current_time;

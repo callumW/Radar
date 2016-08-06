@@ -13,3 +13,4 @@ To Do:
 -Make it so radar speed is defined by how long it should take to reach the
     bottom of the screen.
 -Work out how to draw text. (FreeType?)
+-Set up a version system.

@@ -50,6 +50,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "SDL.h"
 #include "Color.h"
+#include "Platform.h"
 
 extern SDL_Point g_border_points[];
 extern struct color g_border_color;

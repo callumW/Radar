@@ -6,6 +6,7 @@
 */
 #ifndef COLOR_H
 #define COLOR_H
+#include "Platform.h"
 struct color {
     unsigned short r;
     unsigned short g;

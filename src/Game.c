@@ -64,8 +64,8 @@ BOOL g_scanning = TRUE;
 
 void draw_all()
 {
+	float r, g, b;
     glClear(GL_COLOR_BUFFER_BIT);
-    float r, g, b;
     r = (float) g_border_color.r / 255;
     g = (float) g_border_color.g / 255;
     b = (float) g_border_color.b / 255;

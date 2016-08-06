@@ -50,6 +50,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <GL/glu.h>
 #include "Bool.h"
 #include "Settings.h"
+#include "Platform.h"
 
 extern SDL_Window* g_window;
 extern SDL_GLContext* g_gl_context;

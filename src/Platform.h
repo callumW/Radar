@@ -1,9 +1,8 @@
 /*
-    File: Settings.h
-    Author: Callum Wilson callum.w@outlook.com
-    Description: Provide an interface for the user to select (and save) program
-        options.
-    Date: 2016/08/04
+    File: Platform.h
+    Author: Callum Wilson callum.w@outlook
+    Description: Provide definitions/fixes for platform specific eccentricites.
+    Date: 2016/08/06
 
 COPYRIGHT (c) 2016 Callum Wilson
 
@@ -45,22 +44,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
-#ifndef SETTINGS_H
-#define SETTINGS_H
-#include "Bool.h"
-#include "Platform.h"
 
-struct Game_setting {
-    int width;
-    int height;
-    BOOL fullscreen;
-};
+#ifndef PLATFORM_H
+#define PLATFORM_H
 
-extern struct Game_setting default_settings[];
+/* MSVC Does not support inline */
+#ifdef _MSC_VER
+#define inline __inline
+#endif
 
-/*
-    Request the desired settings from the user.
-    \return A game_settings struct representing the user choice.
-*/
-struct Game_setting request_settings();
 #endif

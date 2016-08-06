@@ -60,6 +60,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 int main(int argc, char** argv)
 {
+	int last_fps_check;
     /*
     if (argc > 1) {
         int i = 0;
@@ -86,7 +87,7 @@ int main(int argc, char** argv)
     init_timers();
     init_hud();
 
-    int last_fps_check = SDL_GetTicks();
+    last_fps_check = SDL_GetTicks();
     print_fps(999);
     while (g_running == TRUE) {
         update_timers();

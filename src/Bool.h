@@ -46,6 +46,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #ifndef BOOL
 #include "SDL_opengl.h"
+#include "Platform.h"
 #define BOOL GLboolean
 /***** WARNING! ********/
 /* In the future if GL_FALSE and GL_TRUE then this will break

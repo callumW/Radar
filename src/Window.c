@@ -56,7 +56,7 @@ int gc_win_width = 800;
 int gc_win_height = 600;
 
 long g_frames = 0;
-char g_title_text[] = "Radar v0.1.0 FPS: [000]";
+char g_title_text[] = "Radar v0.1.1 FPS: [000]";
 
 BOOL g_fullscreen = FALSE;
 
@@ -115,13 +115,14 @@ int initialise_window(const struct Game_setting* set)
 
 void print_fps(int fps)
 {
+	int hundreds, tens;
     if (fps > 999) {
         fps = 999;
     }
     else {
-        int hundreds = fps / 100;
+        hundreds = fps / 100;
         fps -= hundreds * 100;
-        int tens = fps / 10;
+        tens = fps / 10;
         fps -= tens * 10;
 
         g_title_text[19] = '0' + hundreds;
@@ -134,6 +135,7 @@ void print_fps(int fps)
 
 int init_opengl()
 {
+	GLenum error;
     g_gl_context = SDL_GL_CreateContext(g_window);
     if (g_gl_context == NULL) {
         printf("Failed to create openGL context!\nError: %s\n", SDL_GetError());
@@ -145,7 +147,7 @@ int init_opengl()
         printf("WARNING: Could not enable vsync in openGL.\n");
     }
 
-    GLenum error = GL_NO_ERROR;
+    error = GL_NO_ERROR;
 
     /* Init projection matrix */
     glMatrixMode(GL_PROJECTION);
