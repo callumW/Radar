@@ -26,7 +26,7 @@ same directory as the executable (on windows only).
 
 ##Tested Systems:
 - Windows:
-..* MinGW (32 bit)
-..* Visual Studio 11 (32 bit)
+  + MinGW (32 bit)
+  + Visual Studio 11 (32 bit)
 - Linux:
 - OS X:
