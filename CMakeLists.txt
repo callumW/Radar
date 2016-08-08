@@ -15,16 +15,16 @@ add_executable (Radar ${SRC_FILES})
 #find_library (SDL_LIBRARY NAMES SDL2 SDL PATHS
 #    /Library/Framworks
 #    C:/SDL2)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+message("SDL2DIR: " $ENV{SDL2DIR})
 
-find_package (SDL REQUIRED)
+find_package (SDL2 REQUIRED)
 find_package (OpenGL REQUIRED)
 
 message ("OPENGL_LIBRARY: ${OPENGL_LIBRARY}")
-message ("SDL Include path: ${SDL_INCLUDE_DIR}")
-message ("SDL Links: ${SDL_LIBRARY}")
+message ("SDL2 Include path: ${SDL2_INCLUDE_DIR}")
+message ("SDL2 Links: ${SDL2_LIBRARY}")
 
 
-include_directories (${SDL_INCLUDE_DIR})
-include_directories (${OPENGL_INCLUDE_DIR})
-target_link_libraries (Radar ${SDL_LIBRARY})
-target_link_libraries (Radar ${OPENGL_LIBRARY})
+include_directories (${SDL2_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
+target_link_libraries (Radar ${SDL2_LIBRARY} ${OPENGL_LIBRARY})
