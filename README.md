@@ -30,3 +30,4 @@ same directory as the executable (on windows only).
   + Visual Studio 11 (32 bit)
 - Linux:
 - OS X:
+  + Unix Make and Clang
