@@ -79,6 +79,7 @@ int initialise_window(const struct Game_setting* set)
         printf("Failed to initialise SDL!\nError: %s\n", SDL_GetError());
         return 1;
     }
+
     if (set->fullscreen == TRUE) {
         g_window = SDL_CreateWindow(g_title_text, SDL_WINDOWPOS_UNDEFINED,
             SDL_WINDOWPOS_UNDEFINED, gc_win_width, gc_win_height,
