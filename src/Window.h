@@ -47,7 +47,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "SDL.h"
 #include "SDL_opengl.h"
+
+#ifdef __APPLE__
+#include <OpenGL/glu.h>
+#endif
+
+#ifdef __linux__
 #include <GL/glu.h>
+#endif
+
+#ifdef __WIN32__
+#include <GL/glu.h>
+#endif
+
 #include "Bool.h"
 #include "Settings.h"
 #include "Platform.h"
