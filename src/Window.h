@@ -45,6 +45,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
+#ifndef WINDOW_H
+#define WINDOW_H
 #include "SDL.h"
 #include "SDL_opengl.h"
 
@@ -103,3 +105,4 @@ int init_opengl();
     print the frames per second in the window title
 */
 void print_fps(int fps);
+#endif
