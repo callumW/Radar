@@ -1,30 +1,36 @@
 cmake_minimum_required (VERSION 2.8)
-project (Radar C)
+project (Radar CXX)
 
-set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
-
-file (GLOB SRC_FILES src/*.c)
+file (GLOB SRC_FILES "src/*.cpp")
 
 #copy media folder into build directory if we are building outside of source
 if (NOT CMAKE_CURRENT_BINARY_DIR EQUAL CMAKE_CURRENT_SOURCE_DIR)
     file (GLOB MEDIA_FILES "media/*")
     file (COPY ${MEDIA_FILES} DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/media")
 endif (NOT CMAKE_CURRENT_BINARY_DIR EQUAL CMAKE_CURRENT_SOURCE_DIR)
+
+# For building release Add WIN32 before ${SRC_FILES}
 add_executable (Radar ${SRC_FILES})
 
-#find_library (SDL_LIBRARY NAMES SDL2 SDL PATHS
-#    /Library/Framworks
-#    C:/SDL2)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
-message("SDL2DIR: " $ENV{SDL2DIR})
+set (
+    CMAKE_MODULE_PATH
+    ${CMAKE_MODULE_PATH}
+    "${CMAKE_SOURCE_DIR}/cmake/Modules")
 
 find_package (SDL2 REQUIRED)
 find_package (OpenGL REQUIRED)
+find_package (SDL2_ttf REQUIRED)
+find_package (OpenAL REQUIRED)
 
-message ("OPENGL_LIBRARY: ${OPENGL_LIBRARY}")
-message ("SDL2 Include path: ${SDL2_INCLUDE_DIR}")
-message ("SDL2 Links: ${SDL2_LIBRARY}")
+include_directories (
+    ${SDL2_INCLUDE_DIR}
+    ${OPENGL_INCLUDE_DIR}
+    ${SDL2TTF_INCLUDE_DIR}
+    ${OPENAL_INCLUDE_DIR} )
 
-
-include_directories (${SDL2_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
-target_link_libraries (Radar ${SDL2_LIBRARY} ${OPENGL_LIBRARY})
+target_link_libraries (
+    Radar
+    ${SDL2_LIBRARY}
+    ${OPENGL_LIBRARY}
+    ${SDL2TTFMAIN_LIBRARY}
+    ${OPENAL_LIBRARY})

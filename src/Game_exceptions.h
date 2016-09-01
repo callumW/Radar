@@ -1,11 +1,9 @@
 /*
-    File: Settings.h
+    File: Game_exceptions.h
     Author: Callum Wilson callum.w@outlook.com
-    Description: Provide an interface for the user to select (and save) program
-        options.
-    Date: 2016/08/04
-
-COPYRIGHT (c) 2016 Callum Wilson
+    Date: 2016-08-20
+    
+COPYRIGHT (c) 2016 Callum Wilson callum.w@outlook.com
 
 MIT License
 
@@ -45,22 +43,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
-#ifndef SETTINGS_H
-#define SETTINGS_H
-#include "Bool.h"
-#include "Platform.h"
 
-struct Game_setting {
-    int width;
-    int height;
-    BOOL fullscreen;
-};
+#ifndef GAME_EXCEPTIONS_H
+#define GAME_EXCEPTIONS_H
 
-extern struct Game_setting default_settings[];
 
-/*
-    Request the desired settings from the user.
-    \return A game_settings struct representing the user choice.
-*/
-struct Game_setting request_settings();
+
 #endif
