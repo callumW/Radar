@@ -106,5 +106,6 @@ int main(int argc, char** argv)
         show_screen();
     }
 
+	SDL_Quit();
     return 0;
 }
