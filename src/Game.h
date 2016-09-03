@@ -1,91 +1,71 @@
-/*
-    File: Game.h
-    Author: Callum Wilson callum.w@outlook.com
-    Description: Gameplay related functions for the radar-turn-based game.
-    Date: 2016/07/28
-
-COPYRIGHT (c) 2016 Callum Wilson
-
-MIT License
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-     _    _               _ _               _____
-    | |  | |             | (_)             |  __ \
-    | |__| | _____      _| |_ _ __   __ _  | |__) |_ _ ___ ___
-    |  __  |/ _ \ \ /\ / / | | '_ \ / _` | |  ___/ _` / __/ __|
-    | |  | | (_) \ V  V /| | | | | | (_| | | |  | (_| \__ \__ \
-    |_|  |_|\___/ \_/\_/ |_|_|_| |_|\__, | |_|   \__,_|___/___/
-                                    __/ |
-                                   |___/
-               _____
-              / ____|
-             | |  __  __ _ _ __ ___   ___  ___
-             | | |_ |/ _` | '_ ` _ \ / _ \/ __|
-             | |__| | (_| | | | | | |  __/\__ \
-              \_____|\__,_|_| |_| |_|\___||___/
-*/
 #ifndef GAME_H
 #define GAME_H
-
-#include "SDL.h"
-#include "Window.h"
-#include "Input_handling.h"
+#include "Graphics.h"
+#include "Input.h"
+#include "Object.h"
 #include "Text.h"
-#include "Bool.h"
 
-extern long g_previous_time;
-extern long g_current_time;
-extern long g_start_time;
+#include <vector>
 
-extern int g_radar_beam_y;
-extern const float gc_radar_beam_speed;
-extern const int gc_radar_beam_delay;
-extern int g_scan_start_time;
-extern int g_last_scan_end;
-extern BOOL g_scanning;
+namespace howling_pass {
 
-/*
-    Draw everything that should be on screen, on screen.
-*/
-void draw_all();
+class Game {
+public:
 
-/*
-    Update the game
-*/
-void update();
+    /**
+     * Constructor
+     * initialises SDL systems, creates a window and an OpenGL rendering context
+     * \param title The title of the app window
+     * \param w Width of the app window. MUST be greater than zero
+     * \param h Height of the app window. MUST be greater than zero
+     * \param f Fullscreen flag. True if fullscreen desired, false otherwise
+     * \throws runtime_error if bad arguments given
+     * \throws runtime_error if failure to initialise window or gl_context
+     * Post-Conditions: window and gl_context will be valid
+     */
+     Game(char* title, int w, int h, bool f);
 
-/*
-    initialise the timing values
-*/
-void init_timers();
+     ~Game();
 
-/*
-    Update the timiing values
-*/
-void update_timers();
+    virtual void update(Uint32 elapsed);
+    virtual void quit();
+    virtual void run();
+    virtual void init();
+    virtual void stop();
+    virtual void render();
 
-/*
-    Update the state of the radar beam
-*/
-void update_radar_beam();
+    SDL_Window* window; /**< The SDL window for this app */
+    SDL_GLContext gl_context; /**< The openGL context */
+
+    int width, height;
+    char* title_text;
+    bool fullscreen;
+
+    /**
+     * initialise SDL
+     * \return True if successful, false otherwise
+     */
+    virtual bool init_sdl();
+
+    /**
+     * Init SDL window
+     */
+    virtual void init_window();
+
+    /**
+     * init OpenGL
+     */
+    virtual void init_opengl();
+
+    virtual void init_openal();
+
+    Input_handler* input;
+
+    Text_renderer* text_rend;
+protected:
+    bool running;
+    virtual void set_opengl_attirbutes();
+    std::vector<Object> game_objects;
+};
+}
 #endif

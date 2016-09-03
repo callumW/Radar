@@ -1,11 +1,9 @@
 /*
-    File: Window.h
+    File: Graphics.h
     Author: Callum Wilson callum.w@outlook.com
-    Description: Functions and variables relating to the game window and
-    rendering to it.
-    Date: 2016/07/27
+    Description: Include headers required for graphics (And more) operations.
 
-COPYRIGHT (c) 2016 Callum Wilson
+COPYRIGHT (c) 2016 Callum Wilson callum.w@outlook.com
 
 MIT License
 
@@ -45,39 +43,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              | |__| | (_| | | | | | |  __/\__ \
               \_____|\__,_|_| |_| |_|\___||___/
 */
+
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
+
 #include "SDL.h"
+#include "SDL_opengl.h"
 
-#include "Bool.h"
+#ifdef __APPLE__
+#include <OpenGL/glu.h>
+#endif
 
-extern SDL_Window* g_window;
-extern SDL_Renderer* g_renderer;
+#ifdef __linux__
+#include <GL/glu.h>
+#endif
 
-extern int gc_win_width;
-extern int gc_win_height;
-//extern const char* gc_title;
+#ifdef __WIN32__
+#include <GL/glu.h>
+#endif
 
-extern long g_frames;
-extern char g_title_text[];
-
-extern BOOL g_fullscreen;
-
-/*
-    Clear the screen with blackness.
-*/
-void clear_screen();
-
-/*
-    Present the screen to the user
-*/
-void show_screen();
-
-/*
-    Initialise SDL systems and create a window and renderer
-    \return 0 upon success, not-zero otherwise
-*/
-int initialise_window();
-
-/*
-    print the frames per second in the window title
-*/
-void print_fps(int fps);
+#endif

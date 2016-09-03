@@ -1,10 +1,9 @@
 /*
-    File: Game.c
+    File: Game_exceptions.h
     Author: Callum Wilson callum.w@outlook.com
-    Description: Gameplay related functions for the radar-turn-based game.
-    Date: 2016/07/28
-
-COPYRIGHT (c) 2016 Callum Wilson
+    Date: 2016-08-20
+    
+COPYRIGHT (c) 2016 Callum Wilson callum.w@outlook.com
 
 MIT License
 
@@ -45,60 +44,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               \_____|\__,_|_| |_| |_|\___||___/
 */
 
-#include "Game.h"
-#include "HUD.h"
-#include "Bool.h"
+#ifndef GAME_EXCEPTIONS_H
+#define GAME_EXCEPTIONS_H
 
-long g_previous_time = 0;
-long g_current_time = 0;
-long g_start_time = 0;
 
-int g_radar_beam_y = 0;
-const float gc_radar_beam_speed = 0.15f;
-const int gc_radar_beam_delay = 500;
-int g_scan_start_time = 0;
-int g_last_scan_end = 0;
-BOOL g_scanning = TRUE;
 
-void draw_all()
-{
-    draw_hud();
-}
-
-void update()
-{
-    g_frames++;
-    update_radar_beam();
-}
-
-void init_timers()
-{
-    g_start_time = SDL_GetTicks();
-    g_current_time = g_start_time;
-    g_scan_start_time = g_start_time;
-    g_previous_time = 0;
-}
-
-void update_timers()
-{
-    g_previous_time = g_current_time;
-    g_current_time = SDL_GetTicks();
-}
-
-void update_radar_beam()
-{
-    if (g_scanning == TRUE) {
-        g_radar_beam_y = (g_current_time - g_scan_start_time) *
-            gc_radar_beam_speed;
-        if (g_radar_beam_y > gc_win_height - gc_padding) {
-            g_scanning = FALSE;
-            g_radar_beam_y = gc_padding;
-            g_last_scan_end = SDL_GetTicks();
-        }
-    }
-    else {
-        if (g_current_time - g_last_scan_end > gc_radar_beam_delay)
-            g_scanning = TRUE;
-        g_scan_start_time = SDL_GetTicks();
-    }
-}
+#endif
